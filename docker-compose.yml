@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:15
+    container_name: paybridge_db
+    restart: always
+    environment:
+      POSTGRES_USER: paybridge_user
+      POSTGRES_PASSWORD: strongpass
+      POSTGRES_DB: paybridge_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  api:
+    build: .
+    container_name: paybridge_api
+    ports:
+      - "8888:8000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://paybridge_user:strongpass@db:5432/paybridge_db
+    volumes:
+      - .:/code
+#    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    command: ["/wait-for-it.sh", "db:5432", "--", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+volumes:
+  postgres_data:
