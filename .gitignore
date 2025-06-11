@@ -1,0 +1,42 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.so
+
+# Virtual environments
+env/
+venv/
+.venv/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# macOS
+.DS_Store
+
+# Python wheel
+*.whl
+
+# Database / test files
+*.sqlite3
+*.log
+*.pid
+
+# Docker
+*.env
+.env.*
+*.local
+
+# Test results
+htmlcov/
+coverage.xml
+.cache/
+.pytest_cache/
+
+# Git
+*.swp
+*~
