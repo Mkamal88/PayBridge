@@ -94,4 +94,4 @@ Tests are located in the `/tests` directory.
 
 ## 🧑‍💻 Author
 
-Built by Mohamed Kamal as a technical exercise.
+Built by Mohamed Kamal.
